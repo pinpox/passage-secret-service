@@ -1,0 +1,32 @@
+<node>
+  <interface name="org.freedesktop.Secret.Collection">
+    <method name="Delete">
+      <arg direction="out" type="o" name="prompt"/>
+    </method>
+    <method name="SearchItems">
+      <arg direction="in"  type="a{ss}" name="attributes"/>
+      <arg direction="out" type="ao"    name="results"/>
+    </method>
+    <method name="CreateItem">
+      <arg direction="in"  type="a{sv}"    name="properties"/>
+      <arg direction="in"  type="(oayays)" name="secret"/>
+      <arg direction="in"  type="b"        name="replace"/>
+      <arg direction="out" type="o"        name="item"/>
+      <arg direction="out" type="o"        name="prompt"/>
+    </method>
+    <property name="Items" type="ao" access="read"/>
+    <property name="Label" type="s" access="readwrite"/>
+    <property name="Locked" type="b" access="read"/>
+    <property name="Created" type="t" access="read"/>
+    <property name="Modified" type="t" access="read"/>
+    <signal name="ItemCreated">
+      <arg type="o" name="item"/>
+    </signal>
+    <signal name="ItemDeleted">
+      <arg type="o" name="item"/>
+    </signal>
+    <signal name="ItemChanged">
+      <arg type="o" name="item"/>
+    </signal>
+  </interface>
+</node>

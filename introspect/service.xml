@@ -1,0 +1,54 @@
+<node>
+  <interface name="org.freedesktop.Secret.Service">
+    <method name="OpenSession">
+      <arg direction="in"  type="s"  name="algorithm"/>
+      <arg direction="in"  type="v"  name="input"/>
+      <arg direction="out" type="v"  name="output"/>
+      <arg direction="out" type="o"  name="result"/>
+    </method>
+    <method name="CreateCollection">
+      <arg direction="in"  type="a{sv}" name="properties"/>
+      <arg direction="in"  type="s"     name="alias"/>
+      <arg direction="out" type="o"     name="collection"/>
+      <arg direction="out" type="o"     name="prompt"/>
+    </method>
+    <method name="SearchItems">
+      <arg direction="in"  type="a{ss}" name="attributes"/>
+      <arg direction="out" type="ao"    name="unlocked"/>
+      <arg direction="out" type="ao"    name="locked"/>
+    </method>
+    <method name="GetSecrets">
+      <arg direction="in"  type="ao"           name="items"/>
+      <arg direction="in"  type="o"            name="session"/>
+      <arg direction="out" type="a{o(oayays)}" name="secrets"/>
+    </method>
+    <method name="Lock">
+      <arg direction="in"  type="ao" name="objects"/>
+      <arg direction="out" type="ao" name="locked"/>
+      <arg direction="out" type="o"  name="prompt"/>
+    </method>
+    <method name="Unlock">
+      <arg direction="in"  type="ao" name="objects"/>
+      <arg direction="out" type="ao" name="unlocked"/>
+      <arg direction="out" type="o"  name="prompt"/>
+    </method>
+    <method name="ReadAlias">
+      <arg direction="in"  type="s" name="name"/>
+      <arg direction="out" type="o" name="collection"/>
+    </method>
+    <method name="SetAlias">
+      <arg direction="in" type="s" name="name"/>
+      <arg direction="in" type="o" name="collection"/>
+    </method>
+    <signal name="CollectionCreated">
+      <arg type="o" name="collection"/>
+    </signal>
+    <signal name="CollectionDeleted">
+      <arg type="o" name="collection"/>
+    </signal>
+    <signal name="CollectionChanged">
+      <arg type="o" name="collection"/>
+    </signal>
+    <property name="Collections" type="ao" access="read"/>
+  </interface>
+</node>

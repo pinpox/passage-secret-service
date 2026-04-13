@@ -1,0 +1,19 @@
+<node>
+  <interface name="org.freedesktop.Secret.Item">
+    <method name="Delete">
+      <arg direction="out" type="o" name="prompt"/>
+    </method>
+    <method name="GetSecret">
+      <arg direction="in"  type="o"        name="session"/>
+      <arg direction="out" type="(oayays)" name="secret"/>
+    </method>
+    <method name="SetSecret">
+      <arg direction="in" type="(oayays)" name="secret"/>
+    </method>
+    <property name="Locked" type="b" access="read"/>
+    <property name="Attributes" type="a{ss}" access="readwrite"/>
+    <property name="Label" type="s" access="readwrite"/>
+    <property name="Created" type="t" access="read"/>
+    <property name="Modified" type="t" access="read"/>
+  </interface>
+</node>
