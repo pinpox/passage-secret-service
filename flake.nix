@@ -54,6 +54,8 @@
             src = ./.;
 
             vendorHash = "sha256-79nyOOG7DDC2tAI2iXWqefvitLHUXp3yQCV3eNLuO1w=";
+
+            meta.mainProgram = "passage-secret-service";
           };
         }
       );
