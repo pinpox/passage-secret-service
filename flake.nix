@@ -46,9 +46,7 @@
         system:
         let
           pkgs = nixpkgsFor.${system};
-        in
-        {
-          passage-secret-service = pkgs.buildGoModule {
+          pkg = pkgs.buildGoModule {
             pname = "passage-secret-service";
             inherit version;
             src = ./.;
@@ -57,10 +55,12 @@
 
             meta.mainProgram = "passage-secret-service";
           };
+        in
+        {
+          passage-secret-service = pkg;
+          default = pkg;
         }
       );
-
-      defaultPackage = forAllSystems (system: self.packages.${system}.passage-secret-service);
 
       formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
 
